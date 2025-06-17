@@ -1,1 +1,3 @@
-# business-visualization-template
+# 示例项目
+
+基于 Vue 3 技术栈进行开发。
