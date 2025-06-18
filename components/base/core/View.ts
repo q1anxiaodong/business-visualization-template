@@ -15,6 +15,7 @@ export abstract class View extends Eventful {
 
   constructor(container: ContainerElement, options: BaseOptions = {}) {
     super();
+    console.log('View constructor start');
     
     if (!container) {
       throw new Error('Container element is required');
@@ -24,21 +25,26 @@ export abstract class View extends Eventful {
     this.options = { ...options };
     
     this.init();
+    console.log('View constructor end');
   }
 
   /**
    * 初始化视图
    */
-  private init(): void {
+  protected init(): void {
+    console.log('View init start');
     try {
       // 初始化渲染器
       this.initRenderer();
+      console.log('View after initRenderer');
       
       // 绑定交互事件
       this.bindInteractionEvents();
+      console.log('View after bindInteractionEvents');
       
       // 执行自定义初始化
       this.onInit();
+      console.log('View after onInit');
       
       this.initialized = true;
       this.emit('initialized');
@@ -46,6 +52,7 @@ export abstract class View extends Eventful {
       console.error('View initialization failed:', error);
       throw error;
     }
+    console.log('View init end');
   }
 
   /**
